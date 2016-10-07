@@ -84,7 +84,7 @@
 				Registration Failed
 			<cfelse>
 				You have registered successfully.
-				<p><a href="registration.cfm">Home Page</a></p>
+				<p><a href="home.cfm">Home Page</a></p>
 			</cfif>
 		
 		<cfelse>
