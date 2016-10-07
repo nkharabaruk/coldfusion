@@ -6,7 +6,7 @@
 </cfif>
 
 <cfquery name="UserList" datasource="userSource"> 
-    SELECT id, firstName, lastName, age, email 
+    SELECT id, firstName, lastName, age, email, password 
     FROM UserTable 
 </cfquery> 
 
@@ -59,11 +59,19 @@
             width=100 
             headeralign="center" 
             headerbold="Yes">
+			
+		<cfgridcolumn name="Password" 
+            header="Password" 
+            width=100 
+            headeralign="center" 
+            headerbold="Yes">
  
     </cfgrid> 
     <br> 
     <cfinput name="submitit" type="Submit" value="Submit"> 
 </cfform>
+
+<br><p><a href="home.cfm">Return home</a></p>
 
 </body> 
 </html>

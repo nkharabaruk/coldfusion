@@ -11,6 +11,7 @@
 </cfquery> 
 
 <cftable query = "UserList" startRow = "1" htmlTable="true" colHeaders="true"> 
+<form action="update_action.cfm" method="Post"> 
 	<cfcol header = "<b>ID</b>" 
 		width = 5 
 		text= "#id#"> 
@@ -34,9 +35,21 @@
         align = "Center" 
         width = 15 
         text= "#email#"> 
+		
+	<cfcol header = "<b>Edit</b>" 
+        align = "Center" 
+        width = 5 
+        text="<a href=""update.cfm"">Edit</a>"> 
+		
+	<cfcol header = "<b>Delete</b>" 
+        align = "Center" 
+        width = 5 
+        text="<a href=""delete_action.cfm"">Delete</a>"> 
+</table> 
 </cftable> 
 
 <p><a href="cabinet.cfm">Go to cabinet</a></p>
+<p><a href="registration.cfm">Register new user</a></p>
 
 </body> 
 </html>

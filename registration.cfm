@@ -67,18 +67,36 @@
 		<cfquery name="emailcheck" datasource="userSource">
 			SELECT *
 			FROM UserTable
-			WHERE email='#FORM.email#'
+			WHERE email=<cfqueryparam  
+                        value="#Form.email#"  
+                        CFSQLType="CF_SQL_VARCHAR">
 		</cfquery>
 		<cfif emailcheck.RecordCount EQ 0>
 			<cfquery datasource="userSource">
 				INSERT INTO UserTable(firstname, lastname, age, email, password)
-				VALUES ('#FORM.firstname#', '#FORM.lastname#', '#FORM.age#', '#FORM.email#', '#FORM.password#')
+				VALUES (<cfqueryparam  
+							value="#Form.firstname#"  
+                            CFSQLType="CF_SQL_VARCHAR">,
+						<cfqueryparam  
+							value="#Form.lastname#"  
+                            CFSQLType="CF_SQL_VARCHAR">,
+						<cfqueryparam  
+							value="#Form.age#"  
+                            CFSQLType="CF_SQL_INTEGER">,
+						<cfqueryparam  
+							value="#Form.email#"  
+                            CFSQLType="CF_SQL_VARCHAR">,
+						<cfqueryparam  
+							value="#Form.password#"  
+                            CFSQLType="CF_SQL_VARCHAR">)
 			</cfquery>
 			
 			<cfquery name="emailcheck2" datasource="userSource">
 				SELECT *
 				FROM UserTable
-				WHERE email='#FORM.email#'
+				WHERE email=<cfqueryparam  
+                            value="#Form.email#"  
+                            CFSQLType="CF_SQL_VARCHAR">
 			</cfquery>
 			<cfif emailcheck2.RecordCount NEQ 1>
 				Registration Failed
