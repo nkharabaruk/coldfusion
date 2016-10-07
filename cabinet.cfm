@@ -1,3 +1,15 @@
+<cfif IsDefined("form.gridEntered") is True>
+	<cfgridupdate grid="user_grid" 
+		datasource="userSource" 
+		tablename="UserTable"
+		keyOnly = "Yes"> 
+</cfif>
+
+<cfquery name="UserList" datasource="userSource"> 
+    SELECT id, firstName, lastName, age, email 
+    FROM UserTable 
+</cfquery> 
+
 <html> 
 <head> 
 <title>Cabinet</title> 
@@ -5,20 +17,8 @@
 <body> 
 <h1>Cabinet</h1>
 
-<cfquery name="UserList" datasource="userSource"> 
-    SELECT id, firstName, lastName, age, email 
-    FROM UserTable 
-</cfquery> 
-
-<cfif IsDefined("form.gridEntered") is True>
-	<cfgridupdate grid="user_grid" 
-		datasource="userSource" 
-		tablename="UserTable"
-		keyOnly = "No"> 
-</cfif>
-
-<cfform name="GridForm" 
-	action="user_grid.cfm"> 
+<cfform name="GridForm" method="post"
+	action="cabinet.cfm"> 
  
     <cfgrid name="user_grid"
 		format="html"	
