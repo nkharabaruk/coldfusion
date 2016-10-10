@@ -5,8 +5,13 @@
 <body> 
  
 <cfquery name="DeleteUser" datasource="userSource"> 
-    DELETE FROM UserTable
-    WHERE id = #id# 
+    <cfif NOT isDefined(#id#)>
+		DELETE FROM UserTable
+		WHERE id = #id#
+		<cfelse>
+			DELETE
+			FROM UserTable
+	</cfif>
 </cfquery> 
  
 <p>Succesfully deleted!<br>

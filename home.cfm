@@ -42,7 +42,8 @@
 		</form>
 	</table>
 </cfoutput>
-<br />
+
+<a href="delete_action.cfm" onClick="return confirm('Are You Sure You Want To Delete ALL Records?');"><button>Delete All Records</button></a>
 
 <p><a href="cabinet.cfm">Go to cabinet</a></p>
 <p><a href="registration.cfm">Register new user</a></p>
