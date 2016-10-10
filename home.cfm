@@ -35,7 +35,7 @@
 				<td>#email#</td>
 				<td>#password#</td>
 				<td><a href="update.cfm">Edit</a></td>
-				<td><input type="Submit" value="Delete"></td>
+				<td><a href="delete_action.cfm?id=#id#" onClick="return confirm('Are You Sure You Want To Delete This Record?')">Delete</a></td>
 			</tr>
 		</cfloop>
 		</tbody>

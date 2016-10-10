@@ -6,7 +6,7 @@
  
 <cfquery name="DeleteUser" datasource="userSource"> 
     DELETE FROM UserTable
-    WHERE id = #Form.id# 
+    WHERE id = #id# 
 </cfquery> 
  
 <p>Succesfully deleted!<br>
