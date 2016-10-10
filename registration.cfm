@@ -79,16 +79,16 @@
                             CFSQLType="CF_SQL_VARCHAR">,
 						<cfqueryparam  
 							value="#Form.lastname#"  
-                            CFSQLType="CF_SQL_VARCHAR">,
+							CFSQLType="CF_SQL_VARCHAR">,
 						<cfqueryparam  
 							value="#Form.age#"  
-                            CFSQLType="CF_SQL_INTEGER">,
+							CFSQLType="CF_SQL_INTEGER">,
 						<cfqueryparam  
 							value="#Form.email#"  
-                            CFSQLType="CF_SQL_VARCHAR">,
+							CFSQLType="CF_SQL_VARCHAR">,
 						<cfqueryparam  
 							value="#Form.password#"  
-                            CFSQLType="CF_SQL_VARCHAR">)
+							CFSQLType="CF_SQL_VARCHAR">)
 			</cfquery>
 			
 			<cfquery name="emailcheck2" datasource="userSource">
@@ -100,6 +100,7 @@
 			</cfquery>
 			<cfif emailcheck2.RecordCount NEQ 1>
 				Registration Failed
+				<p><a href="home.cfm">Home Page</a></p>
 			<cfelse>
 				You have registered successfully.
 				<p><a href="home.cfm">Home Page</a></p>
@@ -107,6 +108,7 @@
 		
 		<cfelse>
 			<p>It appears you have already registered.</p>
+			<p><a href="home.cfm">Home Page</a></p>
 		</cfif>
 	<cfelse>
 		<p class="errors"><b>Your passwords do not match. Please 

@@ -4,7 +4,7 @@
 </head> 
 <body> 
  
-<cfquery name="UpdateUser" datasource="userSource"> 
+<cfquery name="DeleteUser" datasource="userSource"> 
     DELETE FROM UserTable
     WHERE id = #Form.id# 
 </cfquery> 

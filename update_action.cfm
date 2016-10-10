@@ -6,11 +6,21 @@
  
 <cfquery name="UpdateUser" datasource="userSource"> 
     UPDATE UserTable 
-    SET FirstName = '#Form.Firstname#', 
-        LastName = '#Form.LastName#', 
-        age = '#Form.age#', 
-        email = '#Form.email#',
-		password = '#Form.password#'
+    SET FirstName = <cfqueryparam  
+                        value="#Form.Firstname#"  
+                        CFSQLType="CF_SQL_VARCHAR">,
+					LastName = <cfqueryparam  
+						value="#Form.lastname#"  
+						CFSQLType="CF_SQL_VARCHAR">, 
+					age = <cfqueryparam  
+						value="#Form.age#"  
+						CFSQLType="CF_SQL_INTEGER">,
+					email = <cfqueryparam  
+						value="#Form.email#"  
+						CFSQLType="CF_SQL_VARCHAR">,
+					password = <cfqueryparam  
+						value="#Form.password#"  
+						CFSQLType="CF_SQL_VARCHAR">
     WHERE id = #Form.id# 
 </cfquery> 
  
@@ -20,6 +30,7 @@
 </cfoutput> 
 
 <p><a href="update.cfm">Return to update page</a></p>
+<p><a href="home.cfm">Return home</a></p>
  
 </body> 
 </html>
