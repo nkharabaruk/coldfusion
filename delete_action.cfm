@@ -5,9 +5,11 @@
 <body> 
  
 <cfquery name="DeleteUser" datasource="userSource"> 
-    <cfif NOT isDefined(#id#)>
+    <cfif structKeyExists(url, "id")>
 		DELETE FROM UserTable
-		WHERE id = #id#
+		WHERE id = <cfqueryparam  
+					value="#url.id#"  
+					CFSQLType="CF_SQL_INTEGER">
 		<cfelse>
 			DELETE
 			FROM UserTable

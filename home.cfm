@@ -10,10 +10,9 @@
     FROM UserTable 
 </cfquery> 
 
-
 <cfoutput>
 	<table>
-	<form action="delete_action.cfm" method="Post"> 
+	<form action="crud_operations.cfc" method="post"> 
 		<input type="Hidden" name="id" value="#UserList.id#"><br> 
 		<thead>
 			<th width="100" align="left"><b>ID</b></th>
@@ -34,7 +33,7 @@
 				<td>#age#</td>
 				<td>#email#</td>
 				<td>#password#</td>
-				<td><a href="update.cfm">Edit</a></td>
+				<td><a href="update.cfm?id=#id#">Edit</a></td>
 				<td><a href="delete_action.cfm?id=#id#" onClick="return confirm('Are You Sure You Want To Delete This Record?')">Delete</a></td>
 			</tr>
 		</cfloop>
@@ -42,6 +41,7 @@
 		</form>
 	</table>
 </cfoutput>
+<br>
 
 <a href="delete_action.cfm" onClick="return confirm('Are You Sure You Want To Delete ALL Records?');"><button>Delete All Records</button></a>
 
