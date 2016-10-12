@@ -24,6 +24,7 @@
 				<cfthrow message="There was a database error">
 			</cfcatch>
 		</cftry>
+		<!---<cflocation url = "insert.cfm?email=#Form.email#">--->
 	</cffunction>
 	
 	<cffunction name="updateUser" access="remote">
