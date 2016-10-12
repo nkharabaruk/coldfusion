@@ -5,17 +5,17 @@
 <body> 
 <h1>All Users</h1> 
 
-<cfquery name="UserList" datasource="userSource"> 
+<cfquery name="userList" datasource="userSource"> 
     SELECT id, firstName, lastName, age, email, password 
     FROM UserTable 
 	WHERE id = <cfqueryparam  
 				value="#url.id#"  
 				CFSQLType="CF_SQL_INTEGER">
-</cfquery> 
+</cfquery>
 
-<cfoutput query="UserList"> 
+<cfoutput query="userList"> 
 	<table> 
-		<form action="crud_operations.cfc?method=updateUser" method="post""> 
+		<form action="user_operations.cfc?method=updateUser" method="post""> 
 			<input type="Hidden" name="id" value="#id#"><br> 
 		<tr> 
 			<td>First Name:</td>  

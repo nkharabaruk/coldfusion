@@ -4,66 +4,64 @@
 </head>
 <body>
 
-<cfif NOT isDefined("FORM.submitted")>
-
+<cfif NOT isDefined("Form.submitted")>
 	<h2>Registration Form</h2>
-	<cfoutput><form method="post" action="#CGI.SCRIPT_NAME#"></cfoutput>
-	<input type="hidden" name="submitted" value="true">
-	<table>
-	<tr>
-		<td>Email:</td>
-		<td>
-			<input type="text" name="email" size="30" 
-			pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" required>
-		</td>
-	</tr>
-	<tr>
-		<td>First name:</td>
-		<td>
-			<input type="text" name="firstName" size="10" required>
-		</td>
-	</tr>
-	<tr>
-		<td>Last name:</td>
-		<td>
-			<input type="text" name="lastName" size="10" required>
-		</td>
-	</tr>
-	<tr>
-		<td>Age:</td>
-		<td>
-			<input type="number" size="6" name="age" min="18" max="99" value="21"><br>
-		</td>
-	</tr>
-	<tr>
-	<tr>
-		<td>Password:</td>
-		<td>
-			<input type="password" name="password" size="10">
-		</td>
-	</tr>
-	<tr>
-		<td>Repeat Password:</td>
-		<td>
-			<input type="password" name="password2" size="10">
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<input type="reset" value="Reset">
-			<input type="submit" value="Register">
-		</td>
-	</tr>
-	</table>
+	<form action="user_operations.cfc?method=insertUser" method="post""> 
+		<input type="hidden" name="id" value="#id#"><br>
+		<table>
+			<tr>
+				<td>Email:</td>
+				<td>
+					<input type="text" name="email" size="30" 
+					pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}" required>
+				</td>
+			</tr>
+			<tr>
+				<td>First name:</td>
+				<td>
+					<input type="text" name="firstName" size="10" required>
+				</td>
+			</tr>
+			<tr>
+				<td>Last name:</td>
+				<td>
+					<input type="text" name="lastName" size="10" required>
+				</td>
+			</tr>
+			<tr>
+				<td>Age:</td>
+				<td>
+					<input type="number" size="6" name="age" min="18" max="99" value="21"><br>
+				</td>
+			</tr>
+			<tr>
+			<tr>
+				<td>Password:</td>
+				<td>
+					<input type="password" name="password" size="10">
+				</td>
+			</tr>
+			<tr>
+				<td>Repeat Password:</td>
+				<td>
+					<input type="password" name="password2" size="10">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="reset" value="Reset">
+					<input type="submit" value="Register">
+				</td>
+			</tr>
+		</table>
 	</form>
-	
 <cfelse>
 
-	<cfif (FORM.email EQ '') OR (FORM.firstName EQ '') OR (FORM.lastName EQ '') OR (FORM.password EQ '')>
+	<cfif (Form.email EQ '') OR (Form.firstName EQ '') OR (Form.lastName EQ '') OR (Form.password EQ '')>
 		<p>Please, fill all fields.</p>
 	<cfelse>
 	
-	<cfif FORM.password EQ FORM.password2>
+	<cfif Form.password EQ Form.password2>
 		<cfquery name="emailcheck" datasource="userSource">
 			SELECT *
 			FROM UserTable
@@ -72,24 +70,8 @@
                         CFSQLType="CF_SQL_VARCHAR">
 		</cfquery>
 		<cfif emailcheck.RecordCount EQ 0>
-			<cfquery datasource="userSource">
-				INSERT INTO UserTable(firstname, lastname, age, email, password)
-				VALUES (<cfqueryparam  
-							value="#Form.firstname#"  
-                            CFSQLType="CF_SQL_VARCHAR">,
-						<cfqueryparam  
-							value="#Form.lastname#"  
-							CFSQLType="CF_SQL_VARCHAR">,
-						<cfqueryparam  
-							value="#Form.age#"  
-							CFSQLType="CF_SQL_INTEGER">,
-						<cfqueryparam  
-							value="#Form.email#"  
-							CFSQLType="CF_SQL_VARCHAR">,
-						<cfqueryparam  
-							value="#Form.password#"  
-							CFSQLType="CF_SQL_VARCHAR">)
-			</cfquery>
+			<cfobject component = "test.user_operations" name = "user_operations">
+			<cfinvoke component = "#user_operations#" method="insertUser"></cfinvoke>
 			
 			<cfquery name="emailcheck2" datasource="userSource">
 				SELECT *

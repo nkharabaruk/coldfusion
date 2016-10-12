@@ -1,5 +1,31 @@
 <cfcomponent>
 	
+	<cffunction name="insertUser" access="remote">
+		<cftry>
+			<cfquery name="insert" datasource="userSource">
+				INSERT INTO UserTable(firstname, lastname, age, email, password)
+				VALUES (<cfqueryparam  
+							value="#Form.firstname#"  
+                            CFSQLType="CF_SQL_VARCHAR">,
+						<cfqueryparam  
+							value="#Form.lastname#"  
+							CFSQLType="CF_SQL_VARCHAR">,
+						<cfqueryparam  
+							value="#Form.age#"  
+							CFSQLType="CF_SQL_INTEGER">,
+						<cfqueryparam  
+							value="#Form.email#"  
+							CFSQLType="CF_SQL_VARCHAR">,
+						<cfqueryparam  
+							value="#Form.password#"  
+							CFSQLType="CF_SQL_VARCHAR">)
+			</cfquery>
+			<cfcatch type="Any">
+				<cfthrow message="There was a database error">
+			</cfcatch>
+		</cftry>
+	</cffunction>
+	
 	<cffunction name="updateUser" access="remote">
 		<cftry>
 			<cfquery name="update" datasource="userSource"> 
@@ -27,22 +53,13 @@
 				<cfthrow message="There was a database error">
 			</cfcatch>
 		</cftry>
-		<cfoutput>
-			<h1>User Updated</h1> 
-			You have updated the information for <span style="color:red">
-			#Form.firstName# #Form.lastName#</span> in the user database. 
-			<p><a href="update.cfm?id=#id#">Return to update page</a></p>
-			<p><a href="home.cfm">Return home</a></p>
-		</cfoutput>
-		<!---
-		<cfset url.id = "#Form.id#">
-		<cfinclude template="update_success.cfm">
-		--->
+		<cflocation url = "update_success.cfm?id=#id#">
 	</cffunction>
 	
 	<cffunction name="deleteUser" access="remote">
+		<cfargument name="userId" type="numeric" default=0/>
 		<cftry>
-			<cfquery name="DeleteUser" datasource="userSource"> 
+			<cfquery name="delete" datasource="userSource"> 
 				<cfif structKeyExists(url, "id")>
 					DELETE FROM UserTable
 					WHERE id = <cfqueryparam  
@@ -52,16 +69,12 @@
 						DELETE
 						FROM UserTable
 				</cfif>
-						</cfquery> 
+			</cfquery> 
 			<cfcatch type="Any">
 				<cfthrow message="There was a database error">
 			</cfcatch>
 		</cftry>
-		<cfoutput>
-			<p>Succesfully deleted!<br>
-			<a href="home.cfm">Return home</a>
-			</p>
-		</cfoutput>
+		<cflocation url = "delete_success.cfm">
 	</cffunction>
 	
 </cfcomponent>
