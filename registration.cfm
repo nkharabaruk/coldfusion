@@ -57,5 +57,10 @@
     </form>
 </cfif>
 
+<cfmail from="nkharabaruk@gmail.com" to="nkharabaruk@gmail.com" subject="My first email sent with ColdFusion" server="localhost" type="HTML">
+    Hello,
+    This is my first email sent with ColdFusion!
+</cfmail>
+
 </body>
 </html>

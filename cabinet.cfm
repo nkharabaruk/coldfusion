@@ -5,10 +5,8 @@
             keyOnly="Yes">
 </cfif>
 
-<cfquery name="UserList" datasource="userSource"> 
-    SELECT id, firstName, lastName, age, email, password 
-    FROM UserTable 
-</cfquery>
+<cfobject component="test.user_operations" name="user_operations">
+<cfinvoke component="#user_operations#" method="selectUser" returnvariable="select"></cfinvoke>
 
 <html>
 <head>
@@ -25,7 +23,7 @@
             height=800
             width=800
             selectmode="edit"
-            query="UserList"
+            query="select"
             insert="Yes"
             delete="Yes">
 
