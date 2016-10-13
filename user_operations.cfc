@@ -29,8 +29,6 @@
                 <cfthrow message="There was a database error">
             </cfcatch>
         </cftry>
-        <!---<cfinclude template="home.cfm">--->
-        <!---<cflocation url = "home.cfm">--->
     </cffunction>
 
     <cffunction name="updateUser" access="remote">

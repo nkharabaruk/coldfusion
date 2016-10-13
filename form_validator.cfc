@@ -24,7 +24,7 @@
                     <cfelse>
                         <cflocation url = "register_success.cfm">
                     </cfif>
-                <cfelse>ага
+                <cfelse>
                     <cflocation url = "already_exist.cfm">
                 </cfif>
             <cfelse>

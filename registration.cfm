@@ -6,7 +6,7 @@
 
 <cfif NOT isDefined("Form.submitted")>
     <h2>Registration Form</h2>
-    <form action="form_validator.cfc?method=validate&firstName=Form.firstName&lastName=Form.lastName&email=Form.email&password=Form.password&password2=Form.password2" method="post">
+    <form action="form_validator.cfc?method=validate" method="post">
     <input type="hidden" name="id" value="#id#"><br>
     <table>
         <tr>
