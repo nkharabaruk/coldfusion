@@ -5,8 +5,7 @@
             keyOnly="Yes">
 </cfif>
 
-<cfobject component="test.user_operations" name="user_operations">
-<cfinvoke component="#user_operations#" method="selectUser" returnvariable="select"></cfinvoke>
+<cfinvoke component="#application.user_operations#" method="selectUser" returnvariable="select"></cfinvoke>
 
 <html>
 <head>

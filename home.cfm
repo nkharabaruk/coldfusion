@@ -5,14 +5,13 @@
 <body>
 <h1>All Users</h1>
 
-<cfobject component="test.user_operations" name="user_operations">
 <cfif isDefined('action')>
     <cfif url.action eq 'delete'>
-            <cfinvoke component="#user_operations#" method="deleteUser"></cfinvoke>
+            <cfinvoke component="#application.user_operations#" method="deleteUser"></cfinvoke>
     </cfif>
 </cfif>
 
-<cfinvoke component="#user_operations#" method="selectUser" returnvariable="select"></cfinvoke>
+<cfinvoke component="#application.user_operations#" method="selectUser" returnvariable="select"></cfinvoke>
 
 <cfoutput>
     <table>

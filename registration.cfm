@@ -59,6 +59,7 @@
 <br>
 
 <a href="remind_password.cfm">Remind password</a>
+<p><a href="home.cfm">Go home</a></p>
 
 </body>
 </html>

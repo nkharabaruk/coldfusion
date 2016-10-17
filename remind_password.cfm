@@ -5,10 +5,9 @@
 <body>
 <h1>Remind password</h1>
 
-<cfobject component="test.user_operations" name="user_operations">
 <cfif isDefined('Form.email')>
     <cfif Form.email is not ''>
-        <cfinvoke component="#user_operations#" method="send_email"></cfinvoke>
+        <cfinvoke component="#application.user_operations#" method="send_email"></cfinvoke>
     </cfif>
 </cfif>
 

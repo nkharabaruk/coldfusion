@@ -5,8 +5,7 @@
 <body>
 <h1>User Updated</h1>
 
-<cfobject component="test.user_operations" name="user_operations">
-<cfinvoke component="#user_operations#" method="selectUserById" returnvariable="select"></cfinvoke>
+<cfinvoke component="#application.user_operations#" method="selectUserById" returnvariable="select"></cfinvoke>
 
 <cfoutput>
     You have updated the information for

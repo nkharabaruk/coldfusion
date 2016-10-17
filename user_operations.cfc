@@ -120,7 +120,7 @@
                     from="nkharabaruk@gmail.com"
                     to="#Form.email#"
                     subject="Remind password">
-                Your password: #This.selectUserByEmail#
+                Your password: #This.selectUserByEmail.password#
             </cfmail>
             <cfcatch>
                 <cfthrow message="Cannot send password to email">
