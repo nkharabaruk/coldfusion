@@ -110,4 +110,22 @@
         <cflocation url="delete_success.cfm">
     </cffunction>
 
+    <cffunction name="send_email" access="remote">
+        <cftry>
+            <cfmail server="smtp.gmail.com"
+                    useSSL="true"
+                    username="nkharabaruk"
+                    password="Yfnecz123"
+                    port="465"
+                    from="nkharabaruk@gmail.com"
+                    to="#Form.email#"
+                    subject="Remind password">
+                Your password: #This.selectUserByEmail#
+            </cfmail>
+            <cfcatch>
+                <cfthrow message="Cannot send password to email">
+            </cfcatch>
+        </cftry>
+    </cffunction>
+
 </cfcomponent>
