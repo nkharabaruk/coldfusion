@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Registration</title>
+    <title>Password doesn`t match</title>
 </head>
 <body>
     <p class="errors">Your passwords do not match. Please

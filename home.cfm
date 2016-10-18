@@ -11,12 +11,12 @@
     </cfif>
 </cfif>
 
-<cfinvoke component="#application.user_operations#" method="selectUser" returnvariable="select"></cfinvoke>
+<cfinvoke component="#application.user_operations#" method="selectAllUsers" returnvariable="select"></cfinvoke>
 
 <cfoutput>
     <table>
         <form action="user_operations.cfc?method=deleteUser" method="post">
-            <input type="Hidden" name="id" value="#select.id#"><br>
+            <input type="hidden" name="id" value="#select.id#"><br>
         <thead>
             <th width="100" align="left"><b>ID</b></th>
             <th width="150" align="left"><b>First Name</b></th>

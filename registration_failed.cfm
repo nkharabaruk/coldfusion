@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Insert</title>
+    <title>Registration Failed</title>
 </head>
 <body>
     <p>Registration Failed</p>
